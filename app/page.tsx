@@ -12,19 +12,28 @@ export default function Home() {
         <Header />
       </div>
       <div className='bg-white py-6 md:space-y-8 space-y-5'>
-        <p className='text-[#667085] text-base leading-6 font-medium text-center'>
-          Join 4,000+ companies already growing
-        </p>
-        <Marquees />
-        <div>
-          <h1 className='text-[26px] tracking-[-2px] md:text-[50px] text-center mx-auto md:leading-[62px] font-medium md:mt-[96px] max-w-[644px] mt-5'>
-            AI Models tailored for your business needs
-          </h1>
-          <p className='md:text-[22px] text-base mt-2 text-center max-w-[860px] mx-auto px-3 text-[#828282]'>
-            Leverage the power of AI to automate, analyze, and optimize your
-            workflows. Our specialized models are designed to fit different
-            business needs
+        <BlurFade delay={0.5} inView>
+          <p className='text-[#667085] text-base leading-6 font-medium text-center animate-fade-in'>
+            Join 4,000+ companies already growing
           </p>
+        </BlurFade>
+
+        <Marquees />
+
+        <div>
+          <BlurFade delay={0.6} inView>
+            <h1 className='text-[26px] tracking-[-2px] md:text-[50px] text-center mx-auto md:leading-[62px] font-medium md:mt-[96px] max-w-[644px] mt-5 animate-slide-up'>
+              AI Models tailored for your business needs
+            </h1>
+          </BlurFade>
+
+          <BlurFade delay={0.7} inView>
+            <p className='md:text-[22px] text-base mt-2 text-center max-w-[860px] mx-auto px-3 text-[#828282] animate-fade-in'>
+              Leverage the power of AI to automate, analyze, and optimize your
+              workflows. Our specialized models are designed to fit different
+              business needs
+            </p>
+          </BlurFade>
         </div>
       </div>
     </div>
@@ -35,22 +44,34 @@ function Header() {
   return (
     <div className='mx-auto max-w-[1300px]'>
       <div className='md:pt-[45px] pt-5 md:px-[70px] px-5 flex justify-between font-medium'>
-        <LogoIcon />
+        <BlurFade delay={0} inView>
+          <LogoIcon className='animate-fade-in' />
+        </BlurFade>
+
         <ul className='text-white flex items-center text-base space-x-6'>
-          <li>Models</li>
-          <li>Pricing</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Custom Models</li>
+          {['Models', 'Pricing', 'About Us', 'Contact Us', 'Custom Models'].map(
+            (item, index) => (
+              <BlurFade key={item} delay={0.1 * index} inView>
+                <li className='hover:text-blue-200 transition-colors duration-300 cursor-pointer'>
+                  {item}
+                </li>
+              </BlurFade>
+            )
+          )}
         </ul>
-        <div className='flex gap-3'>
-          <Button className='rounded-[4px] bg-transparent border border-white px-7'>
-            Login
-          </Button>
-          <Button className='rounded-[4px]' variant={'outline'}>
-            Get Started Now
-          </Button>
-        </div>
+
+        <BlurFade delay={0.5} inView>
+          <div className='flex gap-3'>
+            <Button className='rounded-[4px] bg-transparent border border-white px-7 hover:bg-white/10 transition-all duration-300'>
+              Login
+            </Button>
+            <Button
+              className='rounded-[4px] hover:scale-105 transition-all duration-300'
+              variant={'outline'}>
+              Get Started Now
+            </Button>
+          </div>
+        </BlurFade>
       </div>
       <div className='md:mt-12 mt-5 md:px-[70px] px-5'>
         <div className='max-w-fit mx-auto'>
