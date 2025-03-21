@@ -56,6 +56,9 @@
   /* Animation duration variables */
   --animation-fade-duration: 0.5s;
   --animation-slide-duration: 0.7s;
+
+  /* Mobile menu animation duration */
+  --menu-transition-duration: 0.3s;
 }
 
 /* Add keyframes after theme declaration */
@@ -86,6 +89,18 @@
   }
 }
 
+/* Add mobile menu animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* Add animation utilities */
 .animate-marquee {
   animation: marquee var(--animation-marquee-duration, 30s) linear infinite;
@@ -99,11 +114,20 @@
   animation: slideUp var(--animation-slide-duration) ease-out forwards;
 }
 
+.menu-slide-in {
+  animation: slideIn var(--menu-transition-duration) ease-out forwards;
+}
+
 /* Add hover transitions */
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+}
+
+/* Prevent body scroll when menu is open */
+.menu-open {
+  overflow: hidden;
 }
 
 /* @media (prefers-color-scheme: dark) {
