@@ -25,7 +25,7 @@ export default function Home() {
 
         <div>
           <BlurFade delay={0.6} inView>
-            <h1 className='text-[26px] tracking-[-2px] md:text-[50px] text-center mx-auto md:leading-[62px] font-medium md:mt-[96px] max-w-[644px] mt-5 animate-slide-up'>
+            <h1 className='text-[26px] px-4 md:tracking-[-2px] md:text-[50px] text-center mx-auto md:leading-[62px] font-medium md:mt-[96px] max-w-[644px] mt-5 animate-slide-up'>
               AI Models tailored for your business needs
             </h1>
           </BlurFade>
