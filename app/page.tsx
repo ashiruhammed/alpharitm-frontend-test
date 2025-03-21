@@ -49,7 +49,7 @@ function Header() {
 
   return (
     <div className='mx-auto max-w-[1300px]'>
-      <div className='md:pt-[45px] pt-5 md:px-[70px] px-5 flex items-center justify-between font-medium relative'>
+      <div className='md:pt-[45px] pt-5 md:px-4 px-1 flex items-center justify-between font-medium relative'>
         <BlurFade delay={0} inView>
           <LogoIcon className='animate-fade-in w-[120px] md:w-auto' />
         </BlurFade>
@@ -149,7 +149,7 @@ function Header() {
           </div>
         </BlurFade>
       </div>
-      <div className='md:mt-12 mt-5 md:px-[70px] px-5'>
+      <div className='md:mt-12 mt-16 md:px-[70px] px-5'>
         <div className='max-w-fit mx-auto'>
           <BlurFade delay={0} inView>
             <TextShimmer
