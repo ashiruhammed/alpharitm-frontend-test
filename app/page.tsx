@@ -10,7 +10,6 @@ export default function Home() {
     <div className='font-[family-name:var(--font-sans)]'>
       <div className='bg-[url(/images/hero-section-bg.png)] bg-cover bg-center'>
         <Header />
-        ca
       </div>
       <div className='bg-white py-6 md:space-y-8 space-y-5'>
         <p className='text-[#667085] text-base leading-6 font-medium text-center'>
