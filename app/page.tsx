@@ -1,5 +1,6 @@
 'use client';
 import { Marquees } from '@/components/custom/marque';
+import SectionTab from '@/components/custom/section-tab';
 import LogoIcon from '@/components/icons/logo';
 import { BlurFade } from '@/components/ui/blur-fade';
 import { Button } from '@/components/ui/button';
@@ -36,6 +37,7 @@ export default function Home() {
               business needs
             </p>
           </BlurFade>
+          <SectionTab />
         </div>
       </div>
     </div>
