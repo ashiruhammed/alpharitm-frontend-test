@@ -147,10 +147,16 @@ const CarouselControl = ({
 
 interface CarouselProps {
   slides: SlideData[];
+  initialIndex?: number;
 }
 
-export function Carousel({ slides }: CarouselProps) {
-  const [current, setCurrent] = useState(0);
+export function Carousel({ slides, initialIndex = 0 }: CarouselProps) {
+  const [current, setCurrent] = useState(initialIndex);
+
+  // Update current slide when initialIndex changes
+  useEffect(() => {
+    setCurrent(initialIndex);
+  }, [initialIndex]);
 
   const handlePreviousClick = () => {
     const previous = current - 1;
@@ -190,7 +196,7 @@ export function Carousel({ slides }: CarouselProps) {
         ))}
       </ul>
 
-      <div className='absolute flex justify-center w-full top-[calc(100%+1rem)]'>
+      {/* <div className='absolute flex justify-center w-full top-[calc(100%+1rem)]'>
         <CarouselControl
           type='previous'
           title='Go to previous slide'
@@ -202,7 +208,7 @@ export function Carousel({ slides }: CarouselProps) {
           title='Go to next slide'
           handleClick={handleNextClick}
         />
-      </div>
+      </div> */}
     </div>
   );
 }

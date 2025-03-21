@@ -37,6 +37,7 @@ const tabContent = [
 
 function Tabs() {
   const [activeTab, setActiveTab] = useState(tabs[0].id);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <div className='flex flex-col items-center gap-8 w-full'>
@@ -44,12 +45,15 @@ function Tabs() {
         <AnimatedTabs
           tabs={tabs}
           defaultTab={activeTab}
-          onChange={(tabId) => setActiveTab(tabId)}
+          onChange={(tabId, index) => {
+            setActiveTab(tabId);
+            setActiveIndex(index);
+          }}
         />
       </div>
 
       <div className='w-full max-w-7xl mx-auto px-4 mt-12'>
-        <Carousel slides={tabContent} />
+        <Carousel slides={tabContent} initialIndex={activeIndex} />
       </div>
     </div>
   );

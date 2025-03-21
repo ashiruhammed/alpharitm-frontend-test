@@ -11,7 +11,7 @@ interface Tab {
 interface AnimatedTabsProps {
   tabs: Tab[];
   defaultTab?: string;
-  onChange?: (tabId: string) => void;
+  onChange?: (tabId: string, index: number) => void;
 }
 
 export function AnimatedTabs({
@@ -24,7 +24,9 @@ export function AnimatedTabs({
 
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
-    onChange?.(tabId);
+    // Pass both the id and index to the onChange handler
+    const activeIndex = tabs.findIndex((tab) => tab.id === tabId);
+    onChange?.(tabId, activeIndex);
   };
 
   return (
