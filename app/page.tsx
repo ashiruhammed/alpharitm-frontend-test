@@ -49,14 +49,14 @@ export default function Home() {
               </h1>
             </BlurFade>
             <BlurFade delay={0.3} inView>
-              <p className='tracking-[-2px] text-white md:text-[22px] md:mt-6 mt-2 text-[16px] md:max-w-[860px] max-w-[400px] text-center mx-auto md:leading-[38px]'>
+              <p className='md:tracking-[-2px] text-white md:text-[22px] md:mt-6 mt-2 text-[16px] md:max-w-[860px] max-w-[400px] text-center mx-auto md:leading-[38px]'>
                 Leverage the power of AI to automate, analyze, and optimize your
                 workflows. Our specialized models are designed to fit different
                 business needs
               </p>
             </BlurFade>
 
-            <div className='flex justify-center md:mt-6 mt-4 md:pb-[116px]'>
+            <div className='flex justify-center md:mt-6 mt-4 md:pb-[116px] pb-10'>
               <BlurFade delay={0.4} inView>
                 <RainbowButton className='rounded-[12px] font-semibold hover:scale-[1.1] duration-100 transition-all px-7 py-[14px] text-[#05152C] bg-white'>
                   Get Started Now
@@ -71,6 +71,16 @@ export default function Home() {
           Join 4,000+ companies already growing
         </p>
         <Marquees />
+        <div>
+          <h1 className='text-[26px] tracking-[-2px] md:text-[50px] text-center mx-auto md:leading-[62px] font-medium md:mt-[96px] max-w-[644px] mt-5'>
+            AI Models tailored for your business needs
+          </h1>
+          <p className='md:text-[22px] text-base mt-2 text-center max-w-[860px] mx-auto px-3 text-[#828282]'>
+            Leverage the power of AI to automate, analyze, and optimize your
+            workflows. Our specialized models are designed to fit different
+            business needs
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ export function Marquee({
       <div className='relative flex overflow-hidden'>
         <div
           className={cn(
-            'flex w-max animate-marquee gap-[168px]',
+            'flex w-max animate-marquee gap-[80px] md:gap-[168px]',
             pauseOnHover && 'hover:[animation-play-state:paused]',
             direction === 'right' && 'animate-marquee-reverse'
           )}
