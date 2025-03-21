@@ -20,6 +20,7 @@ export function AnimatedTabs({
   onChange,
 }: AnimatedTabsProps) {
   const [activeTab, setActiveTab] = useState(defaultTab || tabs[0].id);
+  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
 
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
@@ -32,9 +33,16 @@ export function AnimatedTabs({
         <button
           key={tab.id}
           onClick={() => handleTabChange(tab.id)}
+          onMouseEnter={() => setHoveredTab(tab.id)}
+          onMouseLeave={() => setHoveredTab(null)}
           className={`
             relative rounded-[8px] px-3 py-1.5 text-base font-semibold
-            text-[#A7A7A7] outline-ring transition
+            transition-colors duration-200 ease-in-out
+            ${
+              activeTab === tab.id
+                ? 'text-white'
+                : 'text-[#667085] hover:text-[#4B5563]'
+            }
             focus-visible:outline-2 cursor-pointer
           `}
           style={{
@@ -43,15 +51,32 @@ export function AnimatedTabs({
           {activeTab === tab.id && (
             <motion.span
               layoutId='bubble'
-              className='absolute inset-0 z-[1] bg-[#03217F]'
-              style={{ borderRadius: 'var(--radius)' }}
-              transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+              className='absolute inset-0 z-[1] bg-gradient-to-r from-[#0A2FB8] to-[#03217F]'
+              style={{ borderRadius: '8px' }}
+              transition={{
+                type: 'spring',
+                bounce: 0.3,
+                duration: 0.5,
+                ease: 'easeInOut',
+              }}
             />
           )}
-          <span
-            className={`relative z-[2] ${
-              activeTab === tab.id ? 'text-white' : ''
-            }`}>
+          {hoveredTab === tab.id && activeTab !== tab.id && (
+            <motion.span
+              layoutId='hover-bubble'
+              className='absolute inset-0 z-[1] bg-gradient-to-r from-[#E5E7EB] to-[#F3F4F6]'
+              style={{ borderRadius: '8px' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                type: 'spring',
+                bounce: 0.2,
+                duration: 0.4,
+              }}
+            />
+          )}
+          <span className='relative z-[2] transition-colors duration-200'>
             {tab.label}
           </span>
         </button>
