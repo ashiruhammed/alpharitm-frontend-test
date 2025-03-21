@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useId, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
 interface SlideData {
   title: string;
@@ -63,11 +64,38 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
 
   const { src, content, title } = slide;
 
+  const contentVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
     <div>
       <li
         ref={slideRef}
-        className='flex items-center md:px-[55px] px-[30px] flex-1 relative opacity-100 transition-all duration-300 ease-in-out w-[60vw] h-[523px] mx-[10px] z-10 '
+        className='flex items-center md:px-[55px] px-[30px] flex-1 relative opacity-100 transition-all duration-300 ease-in-out w-[60vw] h-[523px] mx-[10px] z-10 rounded-[12px] overflow-hidden'
         onClick={() => handleSlideClick(index)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -75,7 +103,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
           transform:
             current !== index
               ? 'scale(0.98) rotateX(8deg)'
-              : 'scale(1) rotateX(0deg)  translateY(-68px)',
+              : 'scale(1) rotateX(0deg) translateY(-68px)',
           transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
           transformOrigin: 'bottom',
         }}>
@@ -100,15 +128,32 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
           />
         </div>
 
-        <article
-          className={`relative transition-opacity duration-1000 ease-in-out`}>
-          <h2 className='text-lg md:text-xl text-white md:text-[#828282] font-semibold  relative'>
+        <motion.article
+          initial='hidden'
+          animate={current === index ? 'visible' : 'hidden'}
+          variants={contentVariants}
+          className='relative z-10 md:ml-8'>
+          <motion.h2
+            variants={itemVariants}
+            className='text-lg md:text-xl text-white md:text-[#828282] font-semibold relative'>
             {title}
-          </h2>
-          <h3 className='md:max-w-[345px] text-white md:text-black md:text-[42px] md:tracking-[-2px] font-semibold md:leading-[50px] mt-4'>
+          </motion.h2>
+
+          <motion.h3
+            variants={itemVariants}
+            className='md:max-w-[345px] text-white md:text-black md:text-[42px] md:tracking-[-2px] font-semibold md:leading-[50px] mt-4'>
             {content}
-          </h3>
-        </article>
+          </motion.h3>
+
+          <motion.div variants={itemVariants} className='mt-6'>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className='bg-[#0A2FB8] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#03217F] transition-colors'>
+              Learn More
+            </motion.button>
+          </motion.div>
+        </motion.article>
       </li>
     </div>
   );
