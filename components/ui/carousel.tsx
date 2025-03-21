@@ -88,7 +88,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
                 : 'none',
           }}>
           <img
-            className='absolute right-0 left-[60%] object-cover bottom-0 w-[120%] h-[120%] opacity-100 transition-opacity duration-600 ease-in-out'
+            className='absolute right-0 md:left-[60%] left-0 object-cover bottom-0 w-[120%] h-[120%] opacity-100 transition-opacity duration-600 ease-in-out'
             style={{
               opacity: current === index ? 1 : 0.5,
             }}
@@ -102,10 +102,10 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
 
         <article
           className={`relative transition-opacity duration-1000 ease-in-out`}>
-          <h2 className='text-lg md:text-xl text-[#828282] font-semibold  relative'>
+          <h2 className='text-lg md:text-xl text-white md:text-[#828282] font-semibold  relative'>
             {title}
           </h2>
-          <h3 className='md:max-w-[345px] md:text-[42px] tracking-[-2px] font-semibold md:leading-[50px] mt-4'>
+          <h3 className='md:max-w-[345px] text-white md:text-black md:text-[42px] md:tracking-[-2px] font-semibold md:leading-[50px] mt-4'>
             {content}
           </h3>
         </article>
