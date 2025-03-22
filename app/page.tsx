@@ -6,11 +6,17 @@ import { BlurFade } from '@/components/ui/blur-fade';
 import { Button } from '@/components/ui/button';
 import { RainbowButton } from '@/components/ui/rainbow-button';
 import { TextShimmer } from '@/components/ui/text-shimmer';
+import { Figtree } from 'next/font/google';
 import { useState } from 'react';
+
+const figTree = Figtree({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
 
 export default function Home() {
   return (
-    <div className='font-[family-name:var(--font-sans)]'>
+    <div className={`${figTree.variable} font-sans`}>
       <div className='bg-[url(/images/hero-section-bg.png)] bg-cover bg-center'>
         <Header />
       </div>
